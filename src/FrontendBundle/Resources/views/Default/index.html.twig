@@ -1,0 +1,38 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block body %}
+    <div data-ride="carousel" class="carousel slide margin-tb" id="carousel-1">
+        <div role="listbox" class="carousel-inner">
+            <div class="item active"><a href="raloy.html"><img src="{{ asset('assets/img/slides_1.jpg') }}" alt="Slide Image" /></a></div>
+            <div class="item"><a href="raloy.html"><img src="{{ asset('assets/img/slides_2.jpg') }}" alt="Slide Image" /></a>
+                <div class="carousel-caption fadeInUp animated">
+                    <h5>Responsabilidad Ambiental</h5></div>
+            </div>
+            <div class="item"><a href="#"><img src="{{ asset('assets/img/slides_3.jpg') }}" alt="Slide Image" /></a>
+                <div class="carousel-caption fadeInUp animated">
+                    <h5>Presentaciones </h5></div>
+            </div>
+        </div>
+        <div class="hidden"><a href="#carousel-1" role="button" data-slide="prev" class="left carousel-control"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
+            <a href="#carousel-1" role="button" data-slide="next" class="right carousel-control"><i class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
+        </div>
+    </div>
+    <div class="row margin-tb">
+        <div class="col-sm-4 home-sec">
+            <h4 class="text-center">¿Qué es y Cómo Funciona SkyBlue®?</h4><img class="img-responsive" src="{{ asset('assets/img/home_sec_1.png') }}">
+            <p>Es una solución acuosa con 32.5% de urea grado automotriz de extrema pureza, la cual fue desarrollada para reducir el nivel de emisiones contaminantes de los vehículos y máquinas con motor a Diesel eq... </p>
+            <a href="funciona.html">
+                <h5 class="text-center">Continuar Leyendo</h5></a>
+        </div>
+        <div class="col-sm-4 home-sec">
+            <h4 class="text-center">Regulaciones </h4><img class="img-responsive" src="{{ asset('assets/img/home_sec_2.png') }}">
+            <p>Como se puede observar en la tabla, México esta rezagado en la regulación respecto al control de emisiones contaminantes comparado con otros países. • Actual regulación de emisiones de Nox en M... </p><a href="regulaciones.html"><h5 class="text-center">Continuar Leyendo</h5></a></div>
+        <div
+                class="col-sm-4 home-sec">
+            <h4 class="text-center">Preguntas Frecuentes</h4><img class="img-responsive" src="{{ asset('assets/img/home_sec_3.png') }}">
+            <p>SCR: Tecnología de Última Generación para Cumplir con las Regulaciones de Emisiones 2010 en EU y Euro04 en México. P. ¿Qué es la Reducción Catalítica Selectiva (SCR)? R. SCR es una tecnología que util... </p>
+            <a href="preguntas.html">
+                <h5 class="text-center">Continuar Leyendo</h5></a>
+        </div>
+    </div>
+{% endblock %}
