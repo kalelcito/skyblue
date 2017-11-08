@@ -1,0 +1,120 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title %}Mapa de {{ mapa.nombre|title }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h4 class="header-green">Mapa de {{ mapa.nombre }}</h4>
+    <div class="contenido-skyblue">
+        <div class="row margin-tb us">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="distribuidores">
+                            <h4 class="text-center">Distribuidores Autorizados</h4>
+                            {% for d in distribuidores %}
+                                <div>
+                                    <p><img src="{{ asset('assets/img/icon.png') }}"><strong>{{ d.nombreDistribuidor }}</strong></p>
+                                    <p>Dirección:</p>
+                                    {{ d.direccion|raw }}
+                                    <h5 class="text-center">COMUNÍCATE CON NOSOTROS</h5>
+                                    {% if d.telefono is not empty and d.whatsapp is not empty and d.email is not empty %}
+                                        <div class="col-xs-4">
+                                            <a class="btn btn-info btn-block whatsapp" role="button" href="#" data-phone="{{ d.telefono }}" data-type="call">
+                                                <i class="fa fa-phone"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <a class="btn btn-success btn-block whatsapp" role="button" href="#" data-phone="{{ d.whatsapp }}" data-type="whatsapp" data-text="Hola {{ d.nombreDistribuidor }}">
+                                                <i class="fa fa-whatsapp"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <a class="btn btn-info btn-block" role="button" href="mailto:{{ d.email }}">
+                                                <i class="fa fa-envelope-o"></i>
+                                            </a>
+                                        </div>
+                                    {% elseif (d.telefono is not empty and d.whatsapp is not empty) or (d.telefono is not empty and d.email is not empty) or (d.whatsapp is not empty and d.email is not empty) %}
+                                        {% if d.email is empty %}
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-info btn-block whatsapp" role="button" href="#" data-phone="{{ d.telefono }}" data-type="call">
+                                                    <i class="fa fa-phone"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-success btn-block whatsapp" role="button" href="#" data-phone="{{ d.whatsapp }}" data-type="whatsapp" data-text="Hola {{ d.nombreDistribuidor }}">
+                                                    <i class="fa fa-whatsapp"></i>
+                                                </a>
+                                            </div>
+                                        {% elseif d.telefono is empty %}
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-success btn-block whatsapp" role="button" href="#" data-phone="{{ d.whatsapp }}" data-type="whatsapp" data-text="Hola {{ d.nombreDistribuidor }}">
+                                                    <i class="fa fa-whatsapp"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-info btn-block" role="button" href="mailto:{{ d.email }}">
+                                                    <i class="fa fa-envelope-o"></i>
+                                                </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-info btn-block whatsapp" role="button" href="#" data-phone="{{ d.telefono }}" data-type="call">
+                                                    <i class="fa fa-phone"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <a class="btn btn-info btn-block" role="button" href="mailto:{{ d.email }}">
+                                                    <i class="fa fa-envelope-o"></i>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if d.telefono is not empty %}
+                                            <div class="col-xs-12">
+                                                <a class="btn btn-info btn-block whatsapp" role="button" href="#" data-phone="{{ d.telefono }}" data-type="call">
+                                                    <i class="fa fa-phone"></i>
+                                                </a>
+                                            </div>
+                                        {% elseif d.whatsapp is not empty %}
+                                            <div class="col-xs-12">
+                                                <a class="btn btn-success btn-block whatsapp" role="button" href="#" data-phone="{{ d.whatsapp }}" data-type="whatsapp" data-text="Hola {{ d.nombreDistribuidor }}">
+                                                    <i class="fa fa-whatsapp"></i>
+                                                </a>
+                                            </div>
+                                        {% elseif d.email is not empty %}
+                                            <div class="col-xs-12">
+                                                <a class="btn btn-info btn-block" role="button" href="mailto:{{ d.email }}">
+                                                    <i class="fa fa-envelope-o"></i>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    <br>
+                                    {% if d.telefono is not empty %}
+                                        <p>Teléfono: {{ d.telefono }}</p>
+                                    {% endif %}
+                                    {% if d.whatsapp is not empty %}
+                                        <p>Whatsapp: {{ d.whatsapp }}</p>
+                                    {% endif %}
+                                    {% if d.email is not empty or d.email2 is not empty %}
+                                        <p>E-Mail: {{ d.email }}{% if d.email2 is not empty %}<br>{{ d.email2 }}{% endif %}</p>
+                                    {% endif %}
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>Para poder visualizar el mapa completo, aleja con el cursor</p>
+                        <iframe src="{{ mapa.url }}" class="map"></iframe>
+                        <p>Para ver el mapa más grande da click <a href="{{ mapa.url }}" target="_blank">aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

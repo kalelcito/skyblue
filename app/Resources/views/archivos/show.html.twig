@@ -1,0 +1,90 @@
+    {% extends '@Admin/base.html.twig' %}
+{% block navegacion %}
+{{ include('@Admin/partials/navegacion.html.twig',{'menu':'SkyBlue','submenu':'Archivos'}) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('admin/js/jasny-bootstrap.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.clip').click(function (e) {
+                e.preventDefault();
+                var $temp = $("<input>");
+                $("body").append($temp);
+                {% if archivo.tipo == 1 %}
+                    $temp.val($(this).attr('data')).select();
+                {% elseif archivo.tipo == 2 %}
+                    $temp.val($(this).attr('data-file')).select();
+                {% endif %}
+                document.execCommand("copy");
+                $temp.remove();
+            });
+        });
+    </script>
+{% endblock %}
+
+    {% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Ver Registro</h3>                <form class="form-horizontal" role="form">                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Id</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        {{ archivo.id }}                                </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        {{ archivo.nombre }}                                </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Descripcion</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        {{ archivo.descripcion }}                                </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Copiar Enlace de Archivo</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        <button class="clip" data="{{ absolute_url(asset('uploads/images/'~archivo.url)) }}" data-file="{{ absolute_url(asset('uploads/documents/'~archivo.url)) }}"><i class="fa fa-copy"></i></button>                                </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Archivo</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">  {% if archivo.tipo == 1 %} <img src="{{ asset('uploads/images/'~archivo.url) }}" style="max-width: 100%;">
+                                                                    {% elseif archivo.tipo == 2 %} <a href="{{ asset('uploads/documents/'~archivo.url) }}" target="_blank">Link</a> {% endif %}</p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Tipo</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        {{ archivo.tipo|tipo }}                                </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Activo</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">       {{ archivo.activo|sino }}     </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Creado</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        {% if archivo.createdat %}{{ archivo.createdat|date('Y-m-d H:i:s') }}{% endif %}                                </p>
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Actualizado</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">                                        {% if archivo.updatedat %}{{ archivo.updatedat|date('Y-m-d H:i:s') }}{% endif %}                                </p>
+                            </div>
+                        </div>                    <div class="form-group m-b-0">
+                        <div class="col-sm-12">
+                                                                    <a class="btn btn-inverse waves-effect waves-light m-t-10" style="float:left; margin:5px;" href="{{ path('archivos_index') }}">Regresar</a>            <a class="btn btn-info waves-effect waves-light m-t-10" style="float:left;  margin:5px;"  href="{{ path('archivos_edit', { 'id': archivo.id }) }}">Editar</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

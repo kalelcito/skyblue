@@ -1,4 +1,57 @@
+core_submenus:
+    resource: "@AdminBundle/Controller/SubmenusController.php"
+    type:     annotation
+
+core_paginas:
+    resource: "@AdminBundle/Controller/PaginasController.php"
+    type:     annotation
+
+core_menus:
+    resource: "@AdminBundle/Controller/MenusController.php"
+    type:     annotation
+
+core_maps_distribuidor:
+    resource: "@AdminBundle/Controller/MapsDistribuidorController.php"
+    type:     annotation
+
+core_maps_distribuidor_directorio:
+    resource: "@AdminBundle/Controller/MapsDistribuidorDirectorioController.php"
+    type:     annotation
+
+core_home:
+    resource: "@AdminBundle/Controller/HomeController.php"
+    type:     annotation
+
+core_archivos:
+    resource: "@AdminBundle/Controller/ArchivosController.php"
+    type:     annotation
+
+core_banners:
+    resource: "@AdminBundle/Controller/BannersController.php"
+    type:     annotation
+
+core_administradores:
+    resource: "@AdminBundle/Controller/AdministradoresController.php"
+    type:     annotation
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+core:
+    resource: "@CoreBundle/Controller/"
+    type:     annotation
+    prefix:   /core
+
 frontend:
     resource: "@FrontendBundle/Controller/"
     type:     annotation
     prefix:   /
+
+logoutadmin:
+    path: /admin/logout
+
+pageNotFound:
+    path: /{path}
+    defaults: {_controller: FrontendBundle:Default:error404}

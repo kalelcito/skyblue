@@ -1,0 +1,21 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title %}{{ paginas.nombre }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if sky is defined %}
+            <h2 class="text-center">¡Página no asignada en el Menú!</h2>
+        {% endif %}
+        <h4 class="header-green">{{ paginas.nombre }}</h4>
+        <style>
+            .contenido-skyblue img{
+                max-width: 100%!important;
+                height: auto!important;
+            }
+        </style>
+        <div class="contenido-skyblue">
+            {{ paginas.contenido|raw}}
+        </div>
+    </div>
+{% endblock %}

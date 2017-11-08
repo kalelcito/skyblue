@@ -1,0 +1,51 @@
+    {% extends '@Admin/base.html.twig' %}
+{% block navegacion %}
+{{ include('@Admin/partials/navegacion.html.twig',{'menu':'SkyBlue','submenu':'Menus'}) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('admin/plugins/bower_components/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('admin/plugins/bower_components/datatables/jquery.dataTables.min.js') }}"></script><script>
+    $(document).ready(function(){
+        $('#myTable').DataTable();
+    });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Menus</h3>
+               {#<p class="text-muted m-b-30">{{ Menus</p>#}
+                <table id="myTable" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>No.</th>  <th>Nombre</th>   <th>Orden</th> <th>Slug</th>  <th>Activo</th>   <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set i = 1 %}
+                    {% for menu in menuses %}
+                    <tr>
+                        <td>{{ i }}</td>  <td>{{ menu.nombre }}</td>  <td>{{ menu.orden }}</td> <td>{{ menu.slug }}</td> <td>{{ menu.activo|sino }}</td> <td>
+                                    <div class="btn-group btn-group-xs">
+                                        <a href="{{ path('menus_show', { 'id': menu.id }) }}" data-toggle="tooltip" title="Ver" class="btn btn-default"><i class="fa fa-list-ul"></i></a>
+                                        <a href="{{ path('menus_edit', { 'id': menu.id }) }}" data-toggle="tooltip" title="Editar" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                    </div>
+                                </td>
+                    </tr>
+                    {% set i=i+1 %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

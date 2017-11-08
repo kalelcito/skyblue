@@ -1,0 +1,15 @@
+{% for menu in menus %}
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">{{ menu.nombre }} <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" style="width: 500px;">
+            <div class="col-sm-6">
+                <h4>{{ menu.subtitulo }}</h4>
+                {% for sub in subs if sub.menus.id == menu.id %}
+                    <li role="presentation"><a href="{{ path('paginas',{"menu":menu.slug,"slug":sub.paginas.slug}) }}">{{ sub.nombre }}</a></li>
+                {% endfor %}
+            </div>
+            <div class="col-sm-6 hidden-xs">
+                <img src="{{ asset('uploads/images/'~menu.imagen) }}" class="img-responsive">
+            </div>
+        </ul>
+    </li>
+{% endfor %}
