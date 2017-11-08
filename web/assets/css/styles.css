@@ -1,5 +1,5 @@
 body {
-  background-image:url('../../assets/img/background.jpg');
+  background-image:url('../../assets/img/background_mx.jpg');
   background-repeat:no-repeat;
   background-size:cover;
   background-attachment:fixed;
@@ -20,8 +20,12 @@ body {
   margin-right:auto;
 }
 
+/*typography*/
 .contenido-skyblue p, .contenido-skyblue h4, .contenido-skyblue h5, .contenido-skyblue strong, .contenido-skyblue span, .contenido-skyblue li {
-  color:rgb(0,45,95);
+  font-family:Arial, Helvetica, sans-serif!important;
+  color:#002C5F!important;
+  font-size:14px!important;
+
 }
 
 .contenido-skyblue h5 {
@@ -89,11 +93,21 @@ body {
   color:white;
 }
 
+/*typography*/
 .navbar-default .navbar-nav > li > a {
-  color:white;
-  font-family:'Roboto';
+  font-family:Arial, Helvetica, sans-serif;
+  color:#FFF;
   font-size:16px;
 }
+
+/*typography*/
+.dropdown-menu .col-sm-6 h4, .dropdown-menu .col-sm-4 h4{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:18px;
+  font-weight: bold;
+}
+
+
 
 .nav > li > a {
   padding:10px 8px;
@@ -139,9 +153,14 @@ body {
   box-shadow:0 6px 12px rgba(0,0,0,.175);
 }
 
+/*typography*/
 .dropdown-menu a {
   text-decoration:none;
   color:black;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:13.5px;
+  font-weight: bold;
+
 }
 
 .dropdown-menu a:hover {
@@ -226,10 +245,14 @@ body {
   height: 150px;
 }
 
+/*typography*/
 .home-sec p {
   padding:5px;
   text-align:justify;
-  color:rgb(0,45,95);
+  font-family:Arial, Helvetica, sans-serif;
+  color:#002C5F;
+  font-size:14px;
+
 }
 
 hr {

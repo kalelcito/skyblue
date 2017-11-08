@@ -36,7 +36,7 @@ class Banners
     protected $imagen;
 
     /**
-     * @ORM\Column(type="string", length=75, nullable=true)
+     * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $link;
 
