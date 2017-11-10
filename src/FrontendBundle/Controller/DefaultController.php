@@ -357,8 +357,8 @@ class DefaultController extends Controller
                 $message = \Swift_Message::newInstance()
                     ->setSubject('SkyBlue® WebPage - Contacto')
                     ->setFrom($data['email'])
-                    //->setTo(array('informacion@raloy.com.mx'))
-                    ->setTo(array('cesar@innology.mx'))
+                    ->setTo(array('informacion@raloy.com.mx'))
+                    //->setTo(array('cesar@innology.mx'))
                     ->setBody(
                         $this->renderView('@Frontend/mail/contact.html.twig',array('contacto'=>$data,'paises'=>$country)),
                         'text/html'

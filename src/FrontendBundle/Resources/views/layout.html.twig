@@ -7,6 +7,7 @@
     {% block metas %}{% endblock %}
     <title>{% block title %}SkyBlue®{% endblock %}</title>
     <meta property="og:url" content="{{ absolute_url(path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))) }}"/>
+    <meta property="og:type" content="article" />
     {% block opengraph %}{% endblock %}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -50,6 +51,7 @@
     <div class="row margin-tb">
         <div class="col-md-12 footer">
             <hr>
+            <p class="text-center"><a href="{{ path('privacidad') }}" target="_blank">Aviso de Privacidad</a></p>
             <p class="text-center">SkyBlue® es una marca registrada.</p>
             <p class="text-center">Todos los derechos reservados <span>{{ "now"|date("Y") }}</span></p>
         </div>
