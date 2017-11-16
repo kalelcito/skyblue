@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block metas %}{% endblock %}
     <title>{% block title %}SkyBlue®{% endblock %}</title>
-    <meta property="og:url" content="{{ absolute_url(path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))) }}"/>
-    <meta property="og:type" content="article" />
-    {% block opengraph %}{% endblock %}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome.min.css') }}">

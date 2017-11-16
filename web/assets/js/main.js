@@ -1,11 +1,14 @@
 $(document).ready(function(){
+    $('#carousel-1').carousel({
+        interval: 10000
+    });
     $("#carousel-1").on('slide.bs.carousel', function () {
         $('#carousel-1').carousel('pause');
         $('#carousel-1 .active .carousel-caption').removeClass('fadeInUp animated');
         $('#carousel-1 .active .carousel-caption').addClass('fadeOutDown animated');
         setTimeout(function(){
             $('#carousel-1').carousel('next');
-        },5000);
+        },10000);
     });
     $("#carousel-1").on('slid.bs.carousel', function () {
         $('#carousel-1 .item.active .carousel-caption').removeClass('fadeOutDown animated');
